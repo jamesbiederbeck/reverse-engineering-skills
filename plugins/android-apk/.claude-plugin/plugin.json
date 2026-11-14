@@ -1,0 +1,20 @@
+{
+  "name": "android-apk",
+  "displayName": "Android APK Tamper Audit",
+  "version": "0.1.0",
+  "description": "Unpack an APK and statically analyze it for repackaging, injected code, exfiltration indicators, and suspicious permissions.",
+  "author": {
+    "name": "Victor Biederbeck",
+    "url": "https://github.com/jamesbiederbeck"
+  },
+  "homepage": "https://github.com/jamesbiederbeck/reverse-engineering-skills#android-apk",
+  "repository": "https://github.com/jamesbiederbeck/reverse-engineering-skills",
+  "license": "MIT",
+  "keywords": [
+    "android",
+    "apk",
+    "malware-analysis",
+    "static-analysis",
+    "reverse-engineering"
+  ]
+}

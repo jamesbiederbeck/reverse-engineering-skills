@@ -1,6 +1,6 @@
 # Reverse Engineering Skills
 
-A Claude Code plugin marketplace for hardware reverse engineering, starting with FCC filing research. Skills produce sourced findings, explicit unknowns, and practical next experiments.
+A Claude Code plugin marketplace for reverse engineering: FCC filing research for hardware and static tamper audits for Android APKs. Skills produce sourced findings, explicit unknowns, and practical next experiments.
 
 ## Install
 
@@ -9,6 +9,7 @@ Run in your shell:
 ```bash
 claude plugin marketplace add jamesbiederbeck/reverse-engineering-skills
 claude plugin install fcc-hardware@reverse-engineering-skills
+claude plugin install android-apk@reverse-engineering-skills
 ```
 
 Or, inside a Claude Code session:
@@ -16,6 +17,7 @@ Or, inside a Claude Code session:
 ```text
 /plugin marketplace add jamesbiederbeck/reverse-engineering-skills
 /plugin install fcc-hardware@reverse-engineering-skills
+/plugin install android-apk@reverse-engineering-skills
 ```
 
 ## FCC Hardware
@@ -55,11 +57,24 @@ python3 plugins/fcc-hardware/skills/investigate-fcc-id/scripts/archive_exhibits.
 
 It preserves metadata, validates PDF signatures, hashes files, records partial failures, and refuses to overwrite existing documents. Resume with the same output directory; use `--offline` to check existing files without making requests. See the [manifest schema and retrieval workflow](plugins/fcc-hardware/skills/investigate-fcc-id/references/retrieval.md).
 
+## Android APK
+
+Invoke the skill in Claude Code, or just ask whether a sideloaded or modded APK is safe:
+
+```text
+/android-apk:apk-tamper-audit ./app-modded.apk
+```
+
+The skill unpacks the APK, scans the manifest for permissions and settings that rarely belong in an unmodified app, searches decompiled source, raw dex/native strings, and bundled assets for exfiltration and loader patterns, checks the signer, and writes a ranked report. It decodes string-array-obfuscated JavaScript payloads without running their logic. Supplying the original APK enables a direct diff. Static analysis cannot rule out payloads gated on runtime conditions, and the report says so.
+
+Requirements: Python 3.9+ with `androguard>=4`, Java with `apktool` and `jadx`, and Android SDK `aapt2` and `apksigner`. Node.js is needed only for the deobfuscator and `binwalk` is optional. The unpack step skips any missing tool and records the skip rather than failing. Analysis output goes to a directory in your workspace (default `./apk_analysis`, ignored by this repository); the skill never installs or runs the APK.
+
 ## Plugins
 
 | Plugin | Skill | Purpose |
 | --- | --- | --- |
 | `fcc-hardware` | `investigate-fcc-id` | FCC documents, hardware map, firmware leads, and bench plan |
+| `android-apk` | `apk-tamper-audit` | Static tamper, malware-indicator, and permission audit of an APK |
 
 Plugins live under `plugins/<plugin-name>/`, each with its own `.claude-plugin/plugin.json` and `skills/<skill-name>/SKILL.md`. The root [.claude-plugin/marketplace.json](.claude-plugin/marketplace.json) catalogs installable plugins.
 

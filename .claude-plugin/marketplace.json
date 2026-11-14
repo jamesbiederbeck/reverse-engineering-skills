@@ -1,7 +1,7 @@
 {
   "name": "reverse-engineering-skills",
-  "description": "Evidence-driven skills for hardware reverse engineering, firmware research, and device exploration.",
-  "version": "0.1.0",
+  "description": "Evidence-driven skills for hardware reverse engineering, firmware research, APK analysis, and device exploration.",
+  "version": "0.2.0",
   "owner": {
     "name": "Victor Biederbeck",
     "url": "https://github.com/jamesbiederbeck"
@@ -12,7 +12,26 @@
       "source": "./plugins/fcc-hardware",
       "description": "Turn an FCC ID into a sourced hardware dossier and practical bench plan.",
       "category": "hardware",
-      "tags": ["fcc", "hardware", "reverse-engineering", "firmware", "radio"]
+      "tags": [
+        "fcc",
+        "hardware",
+        "reverse-engineering",
+        "firmware",
+        "radio"
+      ]
+    },
+    {
+      "name": "android-apk",
+      "source": "./plugins/android-apk",
+      "description": "Statically audit a third-party or modded APK for tampering, injected code, and suspicious permissions.",
+      "category": "security",
+      "tags": [
+        "android",
+        "apk",
+        "reverse-engineering",
+        "malware-analysis",
+        "static-analysis"
+      ]
     }
   ]
 }

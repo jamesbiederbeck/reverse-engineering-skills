@@ -10,3 +10,4 @@ node_modules/
 /downloads/
 /artifacts/
 /manifest.json
+/apk_analysis/

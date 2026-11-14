@@ -1,0 +1,20 @@
+# Regex patterns scanned across decompiled source and raw binary strings.
+# Format: label|severity|regex
+# Feel free to add lines here as you learn what a specific piece of malware looks
+# like -- this file is meant to grow independently of the scanning script.
+
+Dynamic dex loading (DexClassLoader/InMemoryDexClassLoader)|high|(DexClassLoader|InMemoryDexClassLoader)
+Reflection-based class loading from a Class.forName call|low|Class\.forName\(
+Shell command execution (Runtime.exec/ProcessBuilder)|medium|(Runtime\.getRuntime\(\)\.exec|new ProcessBuilder)
+Root/su detection or invocation|low|(Superuser\.apk|/system/bin/su|/system/xbin/su|RootBeer)
+Telegram bot token (common C2 channel for cheap malware)|high|[0-9]{8,10}:[A-Za-z0-9_-]{30,45}
+Discord webhook URL (common exfil channel)|high|discord(app)?\.com/api/webhooks/
+Hardcoded raw IP literal|low|\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b
+.onion address|high|[a-z2-7]{16,56}\.onion
+Embedded raw HTTP (not HTTPS) endpoint|medium|http://(?!schemas\.android\.com|www\.w3\.org|xml\.org)[a-zA-Z0-9.-]+
+Firebase Realtime Database default URL (common cheap C2/exfil sink)|medium|firebaseio\.com
+Pastebin raw URL (common cheap config/C2 fetch)|medium|pastebin\.com/raw/
+Device identifier harvesting (IMEI/Android ID/serial)|low|(getDeviceId|getSubscriberId|ANDROID_ID|Build\.SERIAL)
+SMS content access API|low|(getMessageBody|SmsMessage\.createFromPdu)
+Accessibility event capture (own service, not framework glue code)|medium|extends AccessibilityService
+Gesture injection via an accessibility service (screen/keylogging pattern)|medium|dispatchGesture\(
