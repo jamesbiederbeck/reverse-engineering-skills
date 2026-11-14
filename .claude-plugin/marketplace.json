@@ -1,0 +1,18 @@
+{
+  "name": "reverse-engineering-skills",
+  "description": "Evidence-driven skills for hardware reverse engineering, firmware research, and device exploration.",
+  "version": "0.1.0",
+  "owner": {
+    "name": "Victor Biederbeck",
+    "url": "https://github.com/jamesbiederbeck"
+  },
+  "plugins": [
+    {
+      "name": "fcc-hardware",
+      "source": "./plugins/fcc-hardware",
+      "description": "Turn an FCC ID into a sourced hardware dossier and practical bench plan.",
+      "category": "hardware",
+      "tags": ["fcc", "hardware", "reverse-engineering", "firmware", "radio"]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "fcc-hardware",
+  "displayName": "FCC Hardware Dossier",
+  "version": "0.1.0",
+  "description": "Find FCC filings, map hardware and radio details, and build an evidence-backed reverse-engineering plan.",
+  "author": {
+    "name": "Victor Biederbeck",
+    "url": "https://github.com/jamesbiederbeck"
+  },
+  "homepage": "https://github.com/jamesbiederbeck/reverse-engineering-skills#fcc-hardware",
+  "repository": "https://github.com/jamesbiederbeck/reverse-engineering-skills",
+  "license": "MIT",
+  "keywords": ["fcc", "hardware", "reverse-engineering", "firmware", "uart", "jtag", "sdr"]
+}
